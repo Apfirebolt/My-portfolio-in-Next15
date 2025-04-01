@@ -1,12 +1,18 @@
-## Next Auth Boilerplate
+## My Portfolio
 
 ![Next.js Logo](https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg)
 
-It is a Next JS boilerplate which contains authentication using MongoDB database, redux-toolkit, middleware, API routes and more.
+Welcome to my portfolio! This site showcases my projects, blog posts, and a gallery of my favorite pictures. Built with Next.js, it leverages a modern tech stack to deliver a seamless and engaging experience.
 
-It also has a custom theme included by modifying tailwind CSS variables.
+The portfolio includes:
 
-This is available for demo at https://next15-auth-boilerplate.vercel.app/
+- **Projects**: A collection of my work, highlighting my skills in web development and problem-solving.
+- **Blog Posts**: Articles where I share insights, tutorials, and experiences in software development.
+- **Gallery**: A curated selection of pictures that reflect my interests and creativity.
+
+Each section has a details page for each entry which is rendered on server for better SEO. The list pages are rendered on the client-side for better interactivity and are cached using Zustand store for better user experience.
+
+This portfolio is available for demo at https://my-portfolio.vercel.app/
 
 ## Why Next JS?
 
@@ -37,7 +43,7 @@ Next.js streamlines web development by offering a full-stack framework. It allow
 - Add environment variables to this Vercel project, this would include database url and jwt secret.
 
 ```
-DB_URI=mongodb://localhost:27017/next_auth
+DB_URI=mongodb://localhost:27017/portfolio
 JWT_SECRET=mysupersecretpassword
 NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
 ```
@@ -47,7 +53,6 @@ NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
 - If you're using MongoDB Atlas, make sure you've given permissions to access your cluster.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
 
 ## Local Development
 
@@ -88,4 +93,3 @@ I'd welcome contributions to this project! To ensure a smooth process, please fo
 6. **Pull Request**: Submit a pull request with a detailed description of your changes.
 
 Thank you for your contributions!
-

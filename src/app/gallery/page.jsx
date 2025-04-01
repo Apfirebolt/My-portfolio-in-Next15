@@ -1,44 +1,42 @@
 import React, { Fragment } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import GallerySection from "@/components/gallery-section";
 
 export const metadata = {
-    title: "Gallery Page",
-    description: "Explore the portfolio gallery.",
+  title: "Gallery Page",
+  description: "Explore my photo and art gallery.",
 };
 
 const GalleryPage = () => {
-    const images = [
-        "https://via.placeholder.com/300",
-        "https://via.placeholder.com/300",
-        "https://via.placeholder.com/300",
-        "https://via.placeholder.com/300",
-        "https://via.placeholder.com/300",
-        "https://via.placeholder.com/300",
-    ];
-
-    return (
-        <Fragment>
-            <Header />
-            <main className="min-h-screen bg-gray-100 py-10">
-                <section className="container mx-auto px-4">
-                    <h1 className="text-4xl font-bold text-center mb-8">Gallery</h1>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        {images.map((src, index) => (
-                            <div key={index} className="overflow-hidden rounded-lg shadow-lg">
-                                <img
-                                    src={src}
-                                    alt={`Gallery item ${index + 1}`}
-                                    className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            </main>
-            <Footer />
-        </Fragment>
-    );
+  return (
+    <Fragment>
+      <Header />
+      <main className="min-h-screen bg-gray-100 py-10">
+        <section className="container mx-auto px-4">
+          <h1 className="text-4xl font-bold text-center bg-primary py-4 text-accent">
+            Gallery
+          </h1>
+          <section
+            className="relative bg-cover bg-center h-64 flex items-center justify-center text-white"
+            style={{
+              backgroundImage:
+                "url('https://neilpatel.com/wp-content/uploads/2017/02/blogging.jpg')",
+            }}
+          >
+            <div className="bg-black bg-opacity-50 p-6 rounded">
+              <h2 className="text-3xl font-bold">Welcome to My Gallery</h2>
+              <p className="mt-2 text-lg">
+                Discover my life in pictures and my penchant for photography.
+              </p>
+            </div>
+          </section>
+          <GallerySection />
+        </section>
+      </main>
+      <Footer />
+    </Fragment>
+  );
 };
 
 export default GalleryPage;

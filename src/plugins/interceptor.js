@@ -1,7 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
-const axiosInstance = axios.create({
-    baseURL: 'https://kitsu.io/api/edge/'
-});
+let baseURL = "https://softgenie.org/api/";
 
-export default axiosInstance;
+const httpClient = axios.create({ baseURL });
+
+// Create a request interceptor
+
+export default httpClient;

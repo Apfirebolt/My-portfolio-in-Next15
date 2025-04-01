@@ -4,6 +4,8 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
+import logo from "@/assets/logo.png";
+import Image from "next/image";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,15 +37,21 @@ const Header = () => {
 
   return (
     <header className="bg-primary text-accent">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl w-1/2 bg-amber-800 p-5 font-bold flex items-center">
-          <Link href="/">Next Portfolio</Link>
+      <div className="flex flex-wrap justify-between items-center">
+        <h1 className="text-2xl w-full md:w-1/2 bg-background p-3 font-bold flex items-center">
+          <Image
+            src={logo}
+            alt="Logo"
+            width={200}
+            height={60}
+            className="ml-4 rounded-full"
+          />
           <FaBars
-            className="text-2xl ml-auto cursor-pointer sm:hidden"
+            className="text-2xl ml-auto cursor-pointer md:hidden"
             onClick={toggleMenu}
           />
         </h1>
-        <nav className="w-1/2 p-5 hidden sm:block">
+        <nav className="w-full md:w-1/2 p-5 hidden md:block">
           <ul className="flex space-x-4">
             {menuItems.map((item, index) => (
               <li key={index}>
@@ -63,7 +71,7 @@ const Header = () => {
       <div
         className={`fixed top-0 left-0 z-40 h-full bg-primary text-accent w-1/2 transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 sm:hidden`}
+        } transition-transform duration-300 md:hidden`}
       >
         <div className="p-5 flex justify-between items-center">
           <h1 className="text-2xl font-bold">

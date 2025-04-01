@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import ProjectSection from "@/components/project-section";
 
 export const metadata = {
   title: "Projects Page",
@@ -8,54 +9,23 @@ export const metadata = {
 };
 
 const ProjectsPage = () => {
-  const projects = [
-    {
-      title: "Portfolio Website",
-      description:
-        "A personal portfolio website built with Next.js and Tailwind CSS.",
-      link: "https://github.com/yourusername/portfolio-website",
-    },
-    {
-      title: "E-commerce Platform",
-      description:
-        "A full-stack e-commerce platform with React, Node.js, and MongoDB.",
-      link: "https://github.com/yourusername/ecommerce-platform",
-    },
-    {
-      title: "Weather App",
-      description: "A weather forecasting app using OpenWeather API and React.",
-      link: "https://github.com/yourusername/weather-app",
-    },
-    {
-      title: "Task Manager",
-      description:
-        "A task management app with drag-and-drop functionality using React and Redux.",
-      link: "https://github.com/yourusername/task-manager",
-    },
-  ];
 
   return (
     <Fragment>
       <Header />
       <main className="min-h-screen bg-gray-100 py-10">
         <section className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-8">Projects</h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
-              <div key={index} className="p-6 bg-white rounded-lg shadow-lg">
-                <h2 className="text-2xl font-semibold mb-4">{project.title}</h2>
-                <p className="text-gray-700 mb-4">{project.description}</p>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline font-medium"
-                >
-                  View Project
-                </a>
-              </div>
-            ))}
-          </div>
+          <h1 className="text-4xl font-bold text-center bg-primary py-4 text-accent">Projects</h1>
+          <section
+            className="relative bg-cover bg-center h-64 flex items-center justify-center text-white"
+            style={{ backgroundImage: "url('https://images.ctfassets.net/2htm8llflwdx/1LEJIT9KGRC4nwTJ5vuS6H/a912e31c468fd32986f2818816135cc4/OnlineLearning_SouthAsia_Learning_Indoor_GettyImages-1071652068.jpg')" }}
+          >
+            <div className="bg-black bg-opacity-50 p-6 rounded">
+              <h2 className="text-3xl font-bold">Welcome to My Projects</h2>
+              <p className="mt-2 text-lg">Explore my latest work and creations.</p>
+            </div>
+          </section>
+          <ProjectSection />
         </section>
       </main>
       <Footer />
