@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Fragment, useEffect } from "react";
+import Link from "next/link";
 import useStore from "@/store";
 
 const ProjectSection = () => {
@@ -26,6 +27,12 @@ const ProjectSection = () => {
                 </span>
               ))}
             </div>
+            <Link
+              href={`/posts/${post.id}`}
+              className="text-blue-500 hover:underline font-medium"
+            >
+              View Post
+            </Link>
           </div>
         ))}
       </div>

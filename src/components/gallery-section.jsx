@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Fragment, useEffect } from "react";
+import Link from "next/link";
 import useStore from "@/store";
 
 const GallerySection = () => {
@@ -31,6 +32,12 @@ const GallerySection = () => {
                 </span>
               ))}
             </div>
+            <Link
+              href={`/gallery/${gallery.id}`}
+              className="text-blue-500 hover:underline font-medium"
+            >
+              View Gallery
+            </Link>
           </div>
         ))}
       </div>

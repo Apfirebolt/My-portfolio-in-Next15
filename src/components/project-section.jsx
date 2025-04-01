@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Fragment, useEffect } from "react";
+import Link from "next/link";
 import useStore from "@/store";
 
 const ProjectSection = () => {
@@ -26,14 +27,12 @@ const ProjectSection = () => {
                 </span>
               ))}
             </div>
-            <a
-              href={project.project_link}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={`/projects/${project.id}`}
               className="text-blue-500 hover:underline font-medium"
             >
               View Project
-            </a>
+            </Link>
           </div>
         ))}
       </div>
