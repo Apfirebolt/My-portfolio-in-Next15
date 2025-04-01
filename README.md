@@ -4,6 +4,8 @@
 
 Welcome to my portfolio! This site showcases my projects, blog posts, and a gallery of my favorite pictures. Built with Next.js, it leverages a modern tech stack to deliver a seamless and engaging experience.
 
+![Cover Photo](./screenshots/3.png)
+
 The portfolio includes:
 
 - **Projects**: A collection of my work, highlighting my skills in web development and problem-solving.
@@ -12,7 +14,13 @@ The portfolio includes:
 
 Each section has a details page for each entry which is rendered on server for better SEO. The list pages are rendered on the client-side for better interactivity and are cached using Zustand store for better user experience.
 
-This portfolio is available for demo at https://my-portfolio.vercel.app/
+The portfolio is not yet deployed but you can easily see it action by installing packages and running the dev script on local.
+
+## Screenshots
+
+![Screenshot 1](./screenshots/1.png)
+![Screenshot 2](./screenshots/2.png)
+![Screenshot 3](./screenshots/4.png)
 
 ## Why Next JS?
 
