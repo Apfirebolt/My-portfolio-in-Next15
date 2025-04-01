@@ -2,27 +2,26 @@
 
 import React, { Fragment, useEffect } from "react";
 import Link from "next/link";
+import Loader from "./loader";
 import useStore from "@/store";
 
 const GallerySection = () => {
-  const { gallery, fetchGallery } = useStore();
+  const { gallery, fetchGallery, isGalleryLoading } = useStore();
 
   useEffect(() => {
-    fetchGallery();
-  }, []);
+    if (!gallery || !gallery.results || gallery.results.length === 0) {
+      fetchGallery();
+    }
+  }, [gallery, fetchGallery]);
 
   return (
     <Fragment>
+      {isGalleryLoading && (<Loader />)}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {gallery?.results?.map((gallery, index) => (
           <div key={index} className="p-6 bg-white rounded-lg shadow-lg">
-            <img
-              src={gallery.image}
-              alt={gallery.title}
-              className="w-full h-48 object-cover rounded-md mb-4"
-            />
             <h2 className="text-2xl font-semibold mb-4">{gallery.title}</h2>
-            <div className="flex flex-wrap gap-2 mb-4">
+            <div className="flex flex-wrap gap-2 mb-6">
               {gallery.tags.map((tag, index) => (
                 <span
                   key={index}
@@ -34,7 +33,7 @@ const GallerySection = () => {
             </div>
             <Link
               href={`/gallery/${gallery.id}`}
-              className="text-blue-500 hover:underline font-medium"
+              className="text-accent bg-secondary mx-auto px-3 py-2 rounded-lg hover:underline font-medium"
             >
               View Gallery
             </Link>

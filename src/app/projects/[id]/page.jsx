@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import axios from "axios";
 import parse from "html-react-parser";
-import Header from "@/components/Header";
+import Header from "@/components/header-component";
 import Footer from "@/components/Footer";
 
 export async function generateMetadata({ params }) {

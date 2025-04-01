@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Header from "@/components/header";
+import Header from "@/components/header-component";
 import Footer from "@/components/footer";
 import AboutSection from "@/components/about-section";
 

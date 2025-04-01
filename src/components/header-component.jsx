@@ -38,7 +38,7 @@ const Header = () => {
   return (
     <header className="bg-primary text-accent">
       <div className="flex flex-wrap justify-between items-center">
-        <h1 className="text-2xl w-full md:w-1/2 bg-background p-3 font-bold flex items-center">
+        <h1 className="text-2xl w-full md:w-1/2 bg-accent p-3 font-bold flex items-center">
           <Image
             src={logo}
             alt="Logo"
@@ -47,7 +47,7 @@ const Header = () => {
             className="ml-4 rounded-full"
           />
           <FaBars
-            className="text-2xl ml-auto cursor-pointer md:hidden"
+            className="text-2xl ml-auto cursor-pointer md:hidden text-primary"
             onClick={toggleMenu}
           />
         </h1>
@@ -77,7 +77,7 @@ const Header = () => {
           <h1 className="text-2xl font-bold">
             <Link href="/">Next Portfolio</Link>
           </h1>
-          <FaTimes className="text-2xl cursor-pointer" onClick={toggleMenu} />
+          <FaTimes className="text-2xl cursor-pointer text-black" onClick={toggleMenu} />
         </div>
         <ul className="space-y-4 p-5">
           {menuItems.map((item, index) => (

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { Fragment } from "react";
-import Header from "@/components/header";
+import Header from "@/components/header-component";
 import Footer from "@/components/footer";
 import HeroSection from "@/components/hero";
 
