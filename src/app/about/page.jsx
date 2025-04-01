@@ -20,7 +20,7 @@ const AboutPage = () => {
             "url('https://4kwallpapers.com/images/walls/thumbs_3t/13988.jpg')",
         }}
       >
-        <section className="text-white pt-5 container mx-auto bg-primary bg-opacity-50 p-8 rounded-lg flex flex-col lg:flex-row items-center lg:items-start">
+        <section className="text-white pt-5 container mx-auto bg-primary bg-opacity-50 p-8 flex flex-col lg:flex-row items-center lg:items-start">
           <div className="lg:w-1/2 mt-10 text-center lg:text-left">
             <h1 className="text-6xl font-bold mb-12">ABOUT ME</h1>
             <p className="mt-4">

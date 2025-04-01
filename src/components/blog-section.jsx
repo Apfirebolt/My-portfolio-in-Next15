@@ -4,6 +4,7 @@ import React, { Fragment, useEffect } from "react";
 import Link from "next/link";
 import useStore from "@/store";
 import Loader from "./loader";
+import { motion } from "framer-motion";
 
 const ProjectSection = () => {
   const { posts, fetchPosts, isPostLoading } = useStore();
@@ -14,12 +15,24 @@ const ProjectSection = () => {
     }
   }, [posts]);
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <Fragment>
       {isPostLoading && <Loader />}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {posts?.results?.map((post, index) => (
-          <div key={index} className="p-6 bg-white rounded-lg shadow-lg">
+          <motion.div
+            key={index}
+            className="post-card p-6 bg-white rounded-lg shadow-lg"
+            variants={cardVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.5, delay: index * 0.2, ease: "easeOut" }}
+          >
             <h2 className="text-2xl font-semibold mb-4">{post.title}</h2>
             <div className="flex flex-wrap gap-2 mb-6">
               {post.tags.map((tag, index) => (
@@ -37,7 +50,7 @@ const ProjectSection = () => {
             >
               View Post
             </Link>
-          </div>
+          </motion.div>
         ))}
       </div>
     </Fragment>

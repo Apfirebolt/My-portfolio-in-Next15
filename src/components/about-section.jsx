@@ -7,9 +7,11 @@ const AboutSection = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-        <div
+        <motion.div
           className="card my-4 py-4 px-6 border bg-white rounded shadow"
-          data-aos="zoom-in"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
         >
           <h2 className="text-2xl font-bold my-3">
             "Travel is the air I breathe"
@@ -31,10 +33,12 @@ const AboutSection = () => {
             grow as an individual. At the time of writing this, I've already
             been to 20+ solo trips in my life covering 60+ cities in India.
           </p>
-        </div>
-        <div
+        </motion.div>
+        <motion.div
           className="card my-4 py-4 px-6 border bg-white rounded shadow"
-          data-aos="fade-up-right"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="text-2xl font-bold my-3">
             "I have multiple lives – in every game I play."
@@ -64,13 +68,15 @@ const AboutSection = () => {
             Dead Redemption 2, Spider-Man, Batman and more have left a lasting
             impact on me.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-        <div
+        <motion.div
           className="card my-4 py-4 px-6 border bg-white rounded shadow"
-          data-aos="fade-up-left"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
           <h2 className="text-2xl font-bold my-3">
             "Music is the essence of my spirit"
@@ -97,11 +103,13 @@ const AboutSection = () => {
             Taylor Swift, Ellie Goulding, Katy Perry, Enrique Iglesias, Shakira
             and more.
           </p>
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
           className="card my-4 py-4 px-6 border bg-white rounded shadow"
-          data-aos="flip-up"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
           <h2 className="text-2xl font-bold my-3">
             "My penchant for Photography and Video editing"
@@ -129,13 +137,15 @@ const AboutSection = () => {
             worked with Softwares such as Adobe Premiere Pro, After Effects,
             Wondershare Filmora and Movavi Creative Suite for video editing.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-        <div
+        <motion.div
           className="card my-4 py-4 px-6 border bg-white rounded shadow"
-          data-aos="zoom-in-right"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
           <h2 className="text-2xl font-bold my-3">
             "Games and Sports I am into"
@@ -161,11 +171,13 @@ const AboutSection = () => {
             winning a game. I believe that games teach you important life skills
             such as strategy, teamwork, and sportsmanship.
           </p>
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
           className="card my-4 py-4 px-6 border bg-white rounded shadow"
-          data-aos="flip-down"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
           <h2 className="text-2xl font-bold my-3">"I ❤️ Cooking"</h2>
           <p>
@@ -187,7 +199,7 @@ const AboutSection = () => {
             after a long day and it is a skill that everyone should learn. I'd
             often close or open my day with a cooking session.
           </p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

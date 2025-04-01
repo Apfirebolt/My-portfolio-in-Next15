@@ -57,7 +57,7 @@ const Header = () => {
               <li key={index}>
                 <Link
                   href={item.path}
-                  className="px-2 py-3 hover:bg-secondary hover:text-accent transition-all duration-300 shadow rounded"
+                  className="px-3 py-2 hover:bg-secondary border hover:text-accent transition-all duration-300 shadow rounded"
                 >
                   {item.name}
                 </Link>
@@ -75,7 +75,15 @@ const Header = () => {
       >
         <div className="p-5 flex justify-between items-center">
           <h1 className="text-2xl font-bold">
-            <Link href="/">Next Portfolio</Link>
+            <Link href="/">
+            <Image
+              src={logo}
+              alt="Logo"
+              width={200}
+              height={60}
+              className="ml-4 rounded-full"
+            />
+            </Link>
           </h1>
           <FaTimes className="text-2xl cursor-pointer text-black" onClick={toggleMenu} />
         </div>

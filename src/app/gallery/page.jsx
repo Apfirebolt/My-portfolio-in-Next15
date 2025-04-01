@@ -21,7 +21,7 @@ const GalleryPage = () => {
             className="relative bg-cover bg-center h-64 flex items-center justify-center text-white"
             style={{
               backgroundImage:
-                "url('https://neilpatel.com/wp-content/uploads/2017/02/blogging.jpg')",
+                "url('https://hips.hearstapps.com/hmg-prod/images/alpe-di-siusi-sunrise-with-sassolungo-or-langkofel-royalty-free-image-1623254127.jpg')",
             }}
           >
             <div className="bg-black bg-opacity-50 p-6 rounded">

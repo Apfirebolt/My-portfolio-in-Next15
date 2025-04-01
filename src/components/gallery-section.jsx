@@ -4,6 +4,12 @@ import React, { Fragment, useEffect } from "react";
 import Link from "next/link";
 import Loader from "./loader";
 import useStore from "@/store";
+import { motion } from "framer-motion";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const GallerySection = () => {
   const { gallery, fetchGallery, isGalleryLoading } = useStore();
@@ -16,10 +22,17 @@ const GallerySection = () => {
 
   return (
     <Fragment>
-      {isGalleryLoading && (<Loader />)}
+      {isGalleryLoading && <Loader />}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {gallery?.results?.map((gallery, index) => (
-          <div key={index} className="p-6 bg-white rounded-lg shadow-lg">
+          <motion.div
+            key={index}
+            className="p-6 bg-white rounded-lg shadow-lg"
+            variants={cardVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
             <h2 className="text-2xl font-semibold mb-4">{gallery.title}</h2>
             <div className="flex flex-wrap gap-2 mb-6">
               {gallery.tags.map((tag, index) => (
@@ -37,7 +50,7 @@ const GallerySection = () => {
             >
               View Gallery
             </Link>
-          </div>
+          </motion.div>
         ))}
       </div>
     </Fragment>
