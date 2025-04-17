@@ -50,7 +50,7 @@ const ProjectSection = () => {
             </div>
             <Link
               href={`/posts/${post.id}`}
-              className="text-accent bg-secondary mx-auto px-3 py-2 rounded-lg hover:underline font-medium"
+              className="text-accent bg-secondary mx-auto px-3 py-2 rounded-lg hover:bg-primary transition duration-300 font-medium"
             >
               View Post
             </Link>

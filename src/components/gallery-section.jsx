@@ -50,7 +50,7 @@ const GallerySection = () => {
             </div>
             <Link
               href={`/gallery/${gallery.id}`}
-              className="text-accent bg-secondary mx-auto px-3 py-2 rounded-lg hover:underline font-medium"
+              className="text-accent bg-secondary mx-auto px-3 py-2 rounded-lg hover:bg-primary transition duration-300 font-medium"
             >
               View Gallery
             </Link>

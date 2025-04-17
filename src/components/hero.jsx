@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
 
 const Hero = () => {
   return (
@@ -13,13 +12,10 @@ const Hero = () => {
     >
       <h1 className="text-5xl font-bold mb-4">Welcome to my Portfolio</h1>
       <p className="text-lg mb-4">
-        Whether you're a long-time fan or just starting your anime journey,
-        Animix is here to provide you with all the information and resources you
-        need.
+        This is a showcase of my work, skills, and projects. Feel free to explore!
       </p>
-      <p className="text-lg">
-        Thank you for visiting Animix. We hope you enjoy exploring the
-        fascinating world of anime with us!
+      <p>
+        Please check out the projects I've built, the places I've been to and the blog posts I've written.
       </p>
     </motion.div>
   );

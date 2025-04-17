@@ -12,7 +12,7 @@ const GalleryPage = () => {
   return (
     <Fragment>
       <Header />
-      <main className="min-h-screen bg-gray-100 py-10">
+      <main className="min-h-screen mt-12 bg-neutral-50 py-10">
         <section className="container mx-auto px-4">
           <h1 className="text-4xl font-bold text-center bg-primary py-4 text-accent">
             Gallery

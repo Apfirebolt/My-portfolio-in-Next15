@@ -36,7 +36,7 @@ const Header = () => {
   }, [isOpen]);
 
   return (
-    <header className="bg-primary text-accent">
+    <header className="fixed top-0 left-0 w-full z-50 bg-primary text-accent">
       <div className="flex flex-wrap justify-between items-center">
         <div className="text-2xl w-full md:w-1/2 bg-accent p-3 font-bold">
           <Image
@@ -76,13 +76,13 @@ const Header = () => {
         <div className="p-5 flex justify-between items-center">
           <h1 className="text-2xl font-bold">
             <Link href="/">
-            <Image
-              src={logo}
-              alt="Logo"
-              width={200}
-              height={60}
-              className="ml-4 rounded-full"
-            />
+              <Image
+                src={logo}
+                alt="Logo"
+                width={200}
+                height={60}
+                className="ml-4 rounded-full"
+              />
             </Link>
           </h1>
           <FaTimes className="text-2xl cursor-pointer text-black" onClick={toggleMenu} />

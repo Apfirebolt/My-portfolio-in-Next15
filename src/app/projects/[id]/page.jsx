@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import axios from "axios";
 import parse from "html-react-parser";
 import Header from "@/components/header-component";
+import ImageComponent from "@/components/images";
 import Footer from "@/components/Footer";
 
 export async function generateMetadata({ params }) {
@@ -54,7 +55,7 @@ const ProjectDetailPage = async ({ params }) => {
   return (
     <>
       <Header />
-      <div className="container mx-auto my-4">
+      <div className="min-h-screen mt-12 bg-neutral-50 py-10">
         <article className="bg-white shadow-md rounded-lg p-6">
           <h1 className="text-3xl font-bold text-center mb-2">
             {project.title}
@@ -103,15 +104,12 @@ const ProjectDetailPage = async ({ params }) => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mt-6">
-            {project.images.map((image, index) => (
-              <img
-                key={index}
-                src={`https://softgenie.org${image.image}`}
-                alt={`Project Image ${index + 1}`}
-                className="w-full h-auto rounded-lg shadow-md"
-              />
-            ))}
+          <div className="grid grid-cols-1 gap-4 mt-6">
+            {project.images && project.images.length > 0 ? (
+              <ImageComponent images={project.images} />
+            ) : (
+              <p>No images available for this project.</p>
+            )}
           </div>
         </article>
       </div>

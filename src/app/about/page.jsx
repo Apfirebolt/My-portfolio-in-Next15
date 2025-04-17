@@ -14,7 +14,7 @@ const AboutPage = () => {
     <Fragment>
       <Header />
       <main
-        className="h-screen bg-cover bg-center"
+        className="h-screen bg-cover mt-24 bg-center"
         style={{
           backgroundImage:
             "url('https://4kwallpapers.com/images/walls/thumbs_3t/13988.jpg')",
