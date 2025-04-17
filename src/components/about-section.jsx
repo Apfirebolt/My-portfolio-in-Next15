@@ -14,6 +14,33 @@ const AboutSection = () => {
           transition={{ duration: 1, delay: 0.2 }}
         >
           <h2 className="text-2xl font-bold my-3">
+            "My screen time is reserved for real life."
+          </h2>
+          <p>
+            Everyone around me seems to love watching movies and TV shows. I am
+            not a big fan of them. I'd often watch movies with my friends and
+            family but I don't have a habit of watching them alone. I'd often
+            watch movies in theaters with my friends and family and there would
+            often be a big gap between the movies I watch. I am a big fan of
+            Marvel and DC movies and have watched most of them. My favorite
+            movies are Avengers Endgame, LOTR, The Dark Knight, Harry Potter
+            Series, Inception, Good Will Hunting, The Shawshank Redemption,
+            original Spider-Man .
+          </p>
+          <p className="mt-5">
+            In bollywood I'd often watch movies which have a good storyline and
+            acting. I'd really think a lot before watching a movie because I
+            believe that time is precious and I don't want to waste it on
+            something that doesn't add value to my life.
+          </p>
+        </motion.div>
+        <motion.div
+          className="card my-4 py-4 px-6 border bg-white rounded shadow"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          <h2 className="text-2xl font-bold my-3">
             "Travel is the air I breathe"
           </h2>
           <p>
@@ -32,41 +59,6 @@ const AboutSection = () => {
             believe that solo travel is the best way to learn about oneself and
             grow as an individual. At the time of writing this, I've already
             been to 20+ solo trips in my life covering 60+ cities in India.
-          </p>
-        </motion.div>
-        <motion.div
-          className="card my-4 py-4 px-6 border bg-white rounded shadow"
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h2 className="text-2xl font-bold my-3">
-            "I have multiple lives – in every game I play."
-          </h2>
-          <p>
-            I love playing video games and it is one of my favorite pastimes. I
-            have been playing video games since I was a kid and have played
-            various games on different platforms. I enjoy playing games on PC,
-            PS4/PS5, and Mobile. I have played games from various genres such as
-            Role-Playing, Action, Adventure, Strategy, and Sports. I have played
-            games like Pokemon, Call of Duty, FIFA, Need for Speed, GTA, Age of
-            Empires, DOTA, Counter Strike, Spider Man, Last of Us, Horizon Zero
-            Dawn and many more.
-          </p>
-          <p className="mt-5">
-            I believe gaming provides an escape from reality and lets you live
-            multiple virtual lives. It is a great way to relax and unwind after
-            a long day of work. I often play games with my friends and family
-            and enjoy the competitive spirit that comes with it. I also enjoy
-            watching gaming streams on platforms like Twitch and YouTube. I have
-            a special liking for games with a good storyline and character
-            development. I believe that games are a form of art and can evoke
-            emotions and feelings just like any other form of art. Playing a
-            game with a good story can be a truly immersive experience, it's
-            like being part of a movie where you control the actions of the
-            protagonist. Games like The Last of Us, God of War, Uncharted, Red
-            Dead Redemption 2, Spider-Man, Batman and more have left a lasting
-            impact on me.
           </p>
         </motion.div>
       </div>

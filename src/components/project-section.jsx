@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Fragment, useEffect } from "react";
+import parse from "html-react-parser";
 import Loader from "./loader";
 import Link from "next/link";
 import useStore from "@/store";
@@ -43,6 +44,9 @@ const ProjectSection = () => {
                   {tech.trim()}
                 </span>
               ))}
+            </div>
+            <div className="text-gray-700 mb-4">
+              {parse(project.description.substring(0, 300) +  "...")}
             </div>
             <Link
               href={`/projects/${project.id}`}

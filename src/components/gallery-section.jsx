@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Fragment, useEffect } from "react";
+import parse from "html-react-parser";
 import Link from "next/link";
 import Loader from "./loader";
 import useStore from "@/store";
@@ -43,6 +44,9 @@ const GallerySection = () => {
                   {tag.name}
                 </span>
               ))}
+            </div>
+            <div className="text-gray-700 mb-4">
+              {parse(gallery.description.substring(0, 300) +  "...")}
             </div>
             <Link
               href={`/gallery/${gallery.id}`}

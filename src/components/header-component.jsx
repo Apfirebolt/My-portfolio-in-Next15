@@ -38,19 +38,19 @@ const Header = () => {
   return (
     <header className="bg-primary text-accent">
       <div className="flex flex-wrap justify-between items-center">
-        <h1 className="text-2xl w-full md:w-1/2 bg-accent p-3 font-bold flex items-center">
+        <div className="text-2xl w-full md:w-1/2 bg-accent p-3 font-bold">
           <Image
             src={logo}
             alt="Logo"
             width={200}
             height={60}
-            className="ml-4 rounded-full"
+            className="mx-auto hidden md:block rounded-full"
           />
           <FaBars
             className="text-2xl ml-auto cursor-pointer md:hidden text-primary"
             onClick={toggleMenu}
           />
-        </h1>
+        </div>
         <nav className="w-full md:w-1/2 p-5 hidden md:block">
           <ul className="flex space-x-4">
             {menuItems.map((item, index) => (

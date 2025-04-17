@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Fragment, useEffect } from "react";
+import parse from "html-react-parser";
 import Link from "next/link";
 import useStore from "@/store";
 import Loader from "./loader";
@@ -43,6 +44,9 @@ const ProjectSection = () => {
                   {tag.name}
                 </span>
               ))}
+            </div>
+            <div className="text-gray-700 mb-4">
+              {parse(post.content.substring(0, 300) +  "...")}
             </div>
             <Link
               href={`/posts/${post.id}`}
