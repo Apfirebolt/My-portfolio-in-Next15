@@ -3,7 +3,7 @@ import axios from "axios";
 import parse from "html-react-parser";
 import Header from "@/components/header-component";
 import ImageComponent from "@/components/images";
-import Footer from "@/components/Footer";
+import Footer from "@/components/footer";
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
