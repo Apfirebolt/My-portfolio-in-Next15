@@ -63,7 +63,7 @@ const cardVariants = {
 
 const AboutSection = () => {
   return (
-    <section className="w-full py-16 sm:py-24">
+    <section className="w-full py-16 sm:py-24 bg-neutral-950 text-white selection:bg-accent selection:text-neutral-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           {cards.map((card, index) => (
@@ -74,20 +74,44 @@ const AboutSection = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={cardVariants}
-              className="group relative flex flex-col justify-between rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 p-6 sm:p-8 backdrop-blur-sm shadow-sm hover:shadow-xl hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 hover:-translate-y-1"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-neutral-900/90 border border-neutral-800 p-6 sm:p-8 shadow-lg hover:shadow-2xl hover:border-accent/50 transition-all duration-300 hover:-translate-y-1.5"
             >
-              <div>
-                <div className="mb-4 inline-block h-1 w-10 rounded-full bg-accent opacity-80 group-hover:w-16 transition-all duration-300" />
-                
-                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 mb-4 leading-snug">
+              {/* Subtle Ambient Hover Glow */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full bg-accent/10 blur-3xl group-hover:bg-accent/20 transition-all duration-500"
+              />
+
+              <div className="relative z-10">
+                {/* Top Bar: Accent Dash & Watermark Index */}
+                <div className="flex items-center justify-between mb-5">
+                  <div className="h-1 w-10 rounded-full bg-accent group-hover:w-16 transition-all duration-300 shadow-sm shadow-accent/50" />
+                  <span className="text-xs font-mono font-bold tracking-widest text-neutral-600 group-hover:text-accent transition-colors">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+
+                {/* Headline */}
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-4 leading-snug group-hover:text-accent transition-colors duration-200">
                   {card.title}
                 </h2>
 
-                <div className="space-y-4 text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
+                {/* Content Paragraphs */}
+                <div className="space-y-4 text-sm sm:text-base leading-relaxed text-neutral-300 font-normal">
                   {card.paragraphs.map((para, pIdx) => (
-                    <p key={pIdx}>{para}</p>
+                    <p key={pIdx} className="text-neutral-300">
+                      {para}
+                    </p>
                   ))}
                 </div>
+              </div>
+
+              {/* Bottom Border Accent Line on Hover */}
+              <div className="relative z-10 mt-6 pt-4 border-t border-neutral-800/80 flex items-center justify-between">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 group-hover:text-neutral-400 transition-colors">
+                  Personal Chronicle
+                </span>
+                <span className="h-1.5 w-1.5 rounded-full bg-neutral-700 group-hover:bg-accent transition-colors duration-300" />
               </div>
             </motion.article>
           ))}

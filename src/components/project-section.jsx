@@ -1,9 +1,10 @@
 "use client";
 
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaArrowRight, FaCode, FaFolderOpen } from "react-icons/fa";
+import { FaArrowRight, FaCode, FaFolderOpen, FaGithub, FaEye } from "react-icons/fa";
 import useStore from "@/store";
 import Loader from "./loader";
 
@@ -22,7 +23,7 @@ const cardVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      delay: index * 0.1,
+      delay: index * 0.08,
       ease: [0.21, 0.47, 0.32, 0.98],
     },
   }),
@@ -46,10 +47,10 @@ const ProjectSection = () => {
   if (!projectList.length) {
     return (
       <div className="flex flex-col items-center justify-center py-20 px-4 text-center">
-        <div className="p-4 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 mb-4">
-          <FaFolderOpen className="text-3xl" />
+        <div className="p-4 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 mb-4">
+          <FaFolderOpen className="text-3xl text-accent/80" />
         </div>
-        <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200">
+        <h3 className="text-lg font-semibold text-neutral-200">
           No projects available
         </h3>
         <p className="text-sm text-neutral-500 max-w-sm mt-1">
@@ -62,6 +63,7 @@ const ProjectSection = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch py-6">
       {projectList.map((project, index) => {
+        const coverImage = project.images?.[0]?.image;
         const techList = project.technology
           ? project.technology.split(",").map((tech) => tech.trim()).filter(Boolean)
           : [];
@@ -74,64 +76,106 @@ const ProjectSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-40px" }}
-            className="group relative flex flex-col justify-between rounded-2xl bg-white dark:bg-neutral-900/80 border border-neutral-200/80 dark:border-neutral-800 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 hover:-translate-y-1.5"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-neutral-900/80 border border-neutral-800 shadow-sm hover:shadow-2xl hover:border-neutral-700 transition-all duration-300 hover:-translate-y-1.5"
           >
-            {/* Top Content Block */}
             <div>
-              {/* Category / Tags Header */}
-              {project.tags && project.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mb-3">
-                  {project.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-2.5 py-0.5 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-medium rounded-md text-[11px] uppercase tracking-wider"
-                    >
-                      {tag.name}
-                    </span>
-                  ))}
-                </div>
-              )}
+              {/* Cover Image Thumbnail / Fallback Banner */}
+              <div className="relative w-full h-48 sm:h-52 bg-neutral-950 overflow-hidden border-b border-neutral-800">
+                {coverImage ? (
+                  <Image
+                    src={
+                      coverImage.startsWith("http")
+                        ? coverImage
+                        : `https://softgenie.org${coverImage}`
+                    }
+                    alt={project.images?.[0]?.caption || project.title}
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-900 to-black text-neutral-600">
+                    <FaCode className="text-3xl opacity-40" />
+                  </div>
+                )}
 
-              {/* Title */}
-              <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-100 tracking-tight mb-3 group-hover:text-primary transition-colors line-clamp-1">
-                {project.title}
-              </h2>
+                {/* View Count Badge */}
+                {typeof project.views !== "undefined" && (
+                  <div className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-white text-[11px] font-medium border border-white/10">
+                    <FaEye className="text-accent text-xs" />
+                    <span>{project.views}</span>
+                  </div>
+                )}
+              </div>
 
-              {/* Tech Stack Badges */}
-              {techList.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {techList.slice(0, 4).map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="inline-flex items-center gap-1 px-2.5 py-1 bg-neutral-100/80 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-300 rounded-md text-xs font-medium border border-neutral-200/60 dark:border-neutral-700/60"
-                    >
-                      <FaCode className="text-[10px] text-neutral-400" />
-                      {tech}
-                    </span>
-                  ))}
-                  {techList.length > 4 && (
-                    <span className="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-400 rounded-md text-xs font-medium">
-                      +{techList.length - 4}
-                    </span>
-                  )}
-                </div>
-              )}
+              {/* Card Body */}
+              <div className="p-6">
+                {/* Category Tags */}
+                {project.tags && project.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {project.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2.5 py-0.5 bg-neutral-800 text-neutral-300 font-medium rounded-md text-[11px] uppercase tracking-wider"
+                      >
+                        {tag.name}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
-              {/* Description Snippet */}
-              <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-6 line-clamp-4">
-                {getPlainTextSnippet(project.description, 220)}
-              </p>
+                {/* Project Title */}
+                <h2 className="text-xl font-bold text-white tracking-tight mb-3 group-hover:text-accent transition-colors line-clamp-1">
+                  {project.title}
+                </h2>
+
+                {/* Tech Stack Badges */}
+                {techList.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {techList.slice(0, 4).map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="inline-flex items-center gap-1 px-2.5 py-1 bg-neutral-800/80 text-neutral-300 rounded-md text-xs font-medium border border-neutral-700/60"
+                      >
+                        <FaCode className="text-[10px] text-accent" />
+                        {tech}
+                      </span>
+                    ))}
+                    {techList.length > 4 && (
+                      <span className="px-2 py-1 bg-neutral-800 text-neutral-400 rounded-md text-xs font-medium">
+                        +{techList.length - 4}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                {/* Description Snippet */}
+                <p className="text-sm text-neutral-400 leading-relaxed line-clamp-3 mb-4">
+                  {getPlainTextSnippet(project.description, 160)}
+                </p>
+              </div>
             </div>
 
-            {/* Bottom Action Area */}
-            <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
+            {/* Bottom Actions Area */}
+            <div className="px-6 pb-6 pt-3 border-t border-neutral-800/80 flex items-center justify-between">
               <Link
                 href={`/projects/${project.id}`}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-900 dark:bg-neutral-800 text-white dark:text-accent text-xs sm:text-sm font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-700 transition-all duration-200 group/btn"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-200 hover:text-accent transition-colors group/link"
               >
-                <span>View Project</span>
-                <FaArrowRight className="text-xs transition-transform duration-200 group-hover/btn:translate-x-1" />
+                <span>View Details</span>
+                <FaArrowRight className="text-xs transition-transform duration-200 group-hover/link:translate-x-1" />
               </Link>
+
+              {project.project_link && (
+                <a
+                  href={project.project_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View source repository"
+                  className="p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors"
+                >
+                  <FaGithub className="text-lg" />
+                </a>
+              )}
             </div>
           </motion.article>
         );
