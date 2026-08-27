@@ -18,6 +18,16 @@ const nextConfig = {
         hostname: 'images.ctfassets.net',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'hips.hearstapps.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'neilpatel.com',
+        pathname: '/**',
+      }
     ],
   },
 };
