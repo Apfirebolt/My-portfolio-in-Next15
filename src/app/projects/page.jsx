@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/header-component";
-import Footer from "@/components/footer";
-import ProjectSection from "@/components/project-section";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ProjectSection from "@/components/Project";
 import { FaCode } from "react-icons/fa";
 
 export const metadata = {

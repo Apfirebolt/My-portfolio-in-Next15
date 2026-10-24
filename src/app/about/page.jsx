@@ -2,9 +2,9 @@ import React, { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaUserGraduate, FaTerminal } from "react-icons/fa";
-import Header from "@/components/header-component";
-import Footer from "@/components/footer";
-import AboutSection from "@/components/about-section";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import AboutSection from "@/components/About";
 
 export const metadata = {
   title: "About Me - Amit Prafulla",

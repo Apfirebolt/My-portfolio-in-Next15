@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/header-component";
-import Footer from "@/components/footer";
-import BlogSection from "@/components/blog-section";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import BlogSection from "@/components/Blog";
 import { FaPenNib } from "react-icons/fa";
 
 export const metadata = {

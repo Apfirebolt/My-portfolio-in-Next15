@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaArrowRight, FaCamera, FaImages } from "react-icons/fa";
 import useStore from "@/store";
-import Loader from "./loader";
+import Loader from "./Loader";
 
 // Safely strip HTML tags to avoid breaking markup during snippet generation
 const getPlainTextSnippet = (htmlString, maxLength = 150) => {

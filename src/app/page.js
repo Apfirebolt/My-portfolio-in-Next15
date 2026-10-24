@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import Header from "@/components/header-component";
-import Footer from "@/components/footer";
-import HeroSection from "@/components/hero";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeroSection from "@/components/Hero";
 
 const Home = () => {
   return (

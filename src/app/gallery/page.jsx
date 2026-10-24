@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/header-component";
-import Footer from "@/components/footer";
-import GallerySection from "@/components/gallery-section";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import GallerySection from "@/components/Gallery";
 import { FaCamera } from "react-icons/fa";
 
 export const metadata = {

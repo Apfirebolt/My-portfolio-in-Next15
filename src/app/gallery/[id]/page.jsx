@@ -2,9 +2,9 @@ import React, { Fragment } from "react";
 import axios from "axios";
 import parse from "html-react-parser";
 import Link from "next/link";
-import Header from "@/components/header-component";
-import ImageComponent from "@/components/images";
-import Footer from "@/components/footer";
+import Header from "@/components/Header";
+import ImageComponent from "@/components/Images";
+import Footer from "@/components/Footer";
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
