@@ -63,7 +63,7 @@ const cardVariants = {
 
 const AboutSection = () => {
   return (
-    <section className="w-full py-16 sm:py-24 bg-neutral-950 text-white selection:bg-accent selection:text-neutral-950">
+    <section className="w-full py-16 sm:py-24 bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--accent)] selection:text-[var(--background)] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           {cards.map((card, index) => (
@@ -74,32 +74,32 @@ const AboutSection = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={cardVariants}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-neutral-900/90 border border-neutral-800 p-6 sm:p-8 shadow-lg hover:shadow-2xl hover:border-accent/50 transition-all duration-300 hover:-translate-y-1.5"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-[var(--tertiary)]/15 border border-[var(--primary)]/20 p-6 sm:p-10 shadow-lg hover:shadow-2xl hover:border-[var(--accent)]/50 transition-all duration-300 hover:-translate-y-1.5 backdrop-blur-md"
             >
               {/* Subtle Ambient Hover Glow */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full bg-accent/10 blur-3xl group-hover:bg-accent/20 transition-all duration-500"
+                className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full bg-[var(--accent)]/10 blur-3xl group-hover:bg-[var(--accent)]/20 transition-all duration-500"
               />
 
               <div className="relative z-10">
                 {/* Top Bar: Accent Dash & Watermark Index */}
                 <div className="flex items-center justify-between mb-5">
-                  <div className="h-1 w-10 rounded-full bg-accent group-hover:w-16 transition-all duration-300 shadow-sm shadow-accent/50" />
-                  <span className="text-xs font-mono font-bold tracking-widest text-neutral-600 group-hover:text-accent transition-colors">
+                  <div className="h-1 w-10 rounded-full bg-[var(--accent)] group-hover:w-16 transition-all duration-300 shadow-sm shadow-[var(--accent)]/50" />
+                  <span className="text-xs font-mono font-bold tracking-widest text-[var(--primary)] opacity-70 group-hover:text-[var(--accent)] transition-colors">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
                 {/* Headline */}
-                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-4 leading-snug group-hover:text-accent transition-colors duration-200">
+                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[var(--foreground)] mb-4 leading-snug group-hover:text-[var(--accent)] transition-colors duration-200">
                   {card.title}
                 </h2>
 
                 {/* Content Paragraphs */}
-                <div className="space-y-4 text-sm sm:text-base leading-relaxed text-neutral-300 font-normal">
+                <div className="space-y-4 text-sm sm:text-base leading-relaxed text-[var(--primary)] font-normal">
                   {card.paragraphs.map((para, pIdx) => (
-                    <p key={pIdx} className="text-neutral-300">
+                    <p key={pIdx} className="text-[var(--primary)]">
                       {para}
                     </p>
                   ))}
@@ -107,11 +107,11 @@ const AboutSection = () => {
               </div>
 
               {/* Bottom Border Accent Line on Hover */}
-              <div className="relative z-10 mt-6 pt-4 border-t border-neutral-800/80 flex items-center justify-between">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 group-hover:text-neutral-400 transition-colors">
+              <div className="relative z-10 mt-8 pt-4 border-t border-[var(--primary)]/20 flex items-center justify-between">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--primary)] opacity-80 group-hover:text-[var(--foreground)] transition-colors">
                   Personal Chronicle
                 </span>
-                <span className="h-1.5 w-1.5 rounded-full bg-neutral-700 group-hover:bg-accent transition-colors duration-300" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--primary)]/40 group-hover:bg-[var(--accent)] transition-colors duration-300" />
               </div>
             </motion.article>
           ))}

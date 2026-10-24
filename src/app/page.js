@@ -6,7 +6,7 @@ import HeroSection from "@/components/Hero";
 
 const Home = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-neutral-950 text-white selection:bg-accent selection:text-neutral-900">
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--accent)] selection:text-[var(--background)] transition-colors duration-300">
       <Header />
 
       <main className="flex-1">
@@ -21,14 +21,14 @@ const Home = () => {
               fill
               priority
               quality={85}
-              className="object-cover object-center transform scale-105 transition-transform duration-1000"
+              className="object-cover object-center transform scale-105 transition-transform duration-1000 opacity-25"
             />
           </div>
 
           {/* Layered Gradient & Vignette Overlay */}
           <div 
             aria-hidden="true" 
-            className="absolute inset-0 -z-10 bg-gradient-to-b from-black/85 via-black/65 to-neutral-950 backdrop-blur-[1px]" 
+            className="absolute inset-0 -z-10 bg-gradient-to-b from-[var(--background)]/85 via-[var(--background)]/65 to-[var(--background)] backdrop-blur-[1px]" 
           />
 
           {/* Interactive Hero Content */}
@@ -39,7 +39,7 @@ const Home = () => {
           {/* Subtle Bottom Fade to Page Content */}
           <div 
             aria-hidden="true"
-            className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-neutral-950 to-transparent pointer-events-none"
+            className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[var(--background)] to-transparent pointer-events-none"
           />
         </section>
       </main>

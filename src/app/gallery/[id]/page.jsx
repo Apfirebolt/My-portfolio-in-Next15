@@ -43,20 +43,20 @@ const GalleryDetailPage = async ({ params }) => {
     return (
       <Fragment>
         <Header />
-        <main className="min-h-[70vh] flex items-center justify-center pt-24 pb-12 px-4 bg-neutral-50/50">
-          <div className="max-w-md w-full text-center bg-white p-8 rounded-2xl border border-neutral-200/80 shadow-sm">
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-rose-50 text-rose-500 mb-4 font-bold text-xl">
+        <main className="min-h-[70vh] flex items-center justify-center pt-28 pb-16 px-4 bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
+          <div className="max-w-md w-full text-center bg-[var(--tertiary)]/20 p-8 rounded-2xl border border-[var(--primary)]/25 shadow-xl backdrop-blur-md">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[var(--accent)]/15 text-[var(--accent)] mb-4 font-bold text-2xl border border-[var(--accent)]/30">
               !
             </div>
-            <h1 className="text-xl font-bold text-neutral-900 mb-2">
+            <h1 className="text-xl font-extrabold text-[var(--foreground)] mb-2 tracking-tight">
               Failed to load gallery
             </h1>
-            <p className="text-sm text-neutral-500 mb-6">
+            <p className="text-sm text-[var(--primary)] mb-6 leading-relaxed">
               The requested gallery item could not be retrieved or has been removed.
             </p>
             <Link
               href="/gallery"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-neutral-900 hover:bg-neutral-800 rounded-lg transition-colors"
+              className="inline-flex items-center px-5 py-2.5 text-sm font-semibold text-[var(--background)] bg-[var(--accent)] hover:opacity-90 rounded-xl transition-all shadow-sm"
             >
               &larr; Back to Gallery
             </Link>
@@ -86,36 +86,36 @@ const GalleryDetailPage = async ({ params }) => {
   return (
     <Fragment>
       <Header />
-      <main className="min-h-screen pt-24 pb-16 bg-neutral-50/60">
+      <main className="min-h-screen pt-28 pb-20 bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumb Navigation */}
-          <nav className="mb-6 flex items-center text-xs sm:text-sm text-neutral-400 space-x-2">
-            <Link href="/" className="hover:text-neutral-700 transition-colors">
+          <nav className="mb-6 flex items-center text-xs sm:text-sm text-[var(--primary)] space-x-2">
+            <Link href="/" className="hover:text-[var(--accent)] transition-colors">
               Home
             </Link>
-            <span>/</span>
-            <Link href="/gallery" className="hover:text-neutral-700 transition-colors">
+            <span className="opacity-60">/</span>
+            <Link href="/gallery" className="hover:text-[var(--accent)] transition-colors">
               Gallery
             </Link>
-            <span>/</span>
-            <span className="text-neutral-600 font-medium truncate max-w-[200px] sm:max-w-xs">
+            <span className="opacity-60">/</span>
+            <span className="text-[var(--foreground)] font-medium truncate max-w-[200px] sm:max-w-xs">
               {gallery.title}
             </span>
           </nav>
 
           {/* Article Container */}
-          <article className="bg-white rounded-2xl border border-neutral-200/80 shadow-sm overflow-hidden p-6 sm:p-10">
+          <article className="bg-[var(--tertiary)]/15 rounded-3xl border border-[var(--primary)]/20 shadow-lg backdrop-blur-md overflow-hidden p-6 sm:p-12">
             
             {/* Header / Meta Section */}
-            <header className="border-b border-neutral-100 pb-6 mb-8">
+            <header className="border-b border-[var(--primary)]/20 pb-8 mb-8">
               {/* Tags */}
               {gallery.tags && gallery.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-4">
                   {gallery.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="px-3 py-0.5 bg-neutral-100 text-neutral-700 font-medium rounded-full text-xs tracking-wide uppercase"
+                      className="px-3.5 py-1 bg-[var(--tertiary)]/40 border border-[var(--primary)]/20 text-[var(--foreground)] font-semibold rounded-full text-xs tracking-wider uppercase"
                     >
                       {tag.name}
                     </span>
@@ -124,21 +124,21 @@ const GalleryDetailPage = async ({ params }) => {
               )}
 
               {/* Title */}
-              <h1 className="text-2xl sm:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
+              <h1 className="text-2xl sm:text-4xl font-black text-[var(--foreground)] tracking-tight leading-tight mb-5">
                 {gallery.title}
               </h1>
 
               {/* Timestamp Metadata Details */}
-              <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm text-neutral-500">
+              <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm text-[var(--primary)]">
                 {formattedCreatedDate && (
                   <div className="flex items-center gap-1.5">
-                    <span className="font-medium text-neutral-700">Published:</span>
+                    <span className="font-semibold text-[var(--foreground)] opacity-90">Published:</span>
                     <time dateTime={gallery.date_posted}>{formattedCreatedDate}</time>
                   </div>
                 )}
                 {formattedUpdatedDate && formattedUpdatedDate !== formattedCreatedDate && (
                   <div className="flex items-center gap-1.5">
-                    <span className="font-medium text-neutral-700">Updated:</span>
+                    <span className="font-semibold text-[var(--foreground)] opacity-90">Updated:</span>
                     <time dateTime={gallery.date_updated}>{formattedUpdatedDate}</time>
                   </div>
                 )}
@@ -147,14 +147,15 @@ const GalleryDetailPage = async ({ params }) => {
 
             {/* Content Body */}
             {gallery.description && (
-              <div className="prose prose-neutral max-w-none text-neutral-700 leading-relaxed space-y-4 mb-10">
+              <div className="prose max-w-none text-[var(--primary)] leading-relaxed space-y-4 mb-12 [&>p]:text-[var(--primary)] [&>h2]:text-[var(--foreground)] [&>h3]:text-[var(--foreground)]">
                 {parse(gallery.description)}
               </div>
             )}
 
             {/* Image Gallery Stream */}
-            <section className="pt-6 border-t border-neutral-100">
-              <h2 className="text-lg font-bold text-neutral-900 mb-4">
+            <section className="pt-8 border-t border-[var(--primary)]/20">
+              <h2 className="text-xl font-bold text-[var(--foreground)] mb-6 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
                 Captured Moments
               </h2>
               {gallery.images && gallery.images.length > 0 ? (
@@ -162,8 +163,8 @@ const GalleryDetailPage = async ({ params }) => {
                   <ImageComponent images={gallery.images} />
                 </div>
               ) : (
-                <div className="p-8 text-center bg-neutral-50 rounded-xl border border-dashed border-neutral-200">
-                  <p className="text-sm text-neutral-500">
+                <div className="p-10 text-center bg-[var(--background)]/50 rounded-2xl border border-dashed border-[var(--primary)]/30">
+                  <p className="text-sm text-[var(--primary)]">
                     No visual assets available for this post.
                   </p>
                 </div>
