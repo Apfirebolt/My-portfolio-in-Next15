@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 @import "tailwindcss";
 
+/* --- Global Swiper Styles --- */
+@import 'swiper/css';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-fade';
+
 /* --- LIGHT THEME (Warm, Clean, Creative Palette) --- */
 :root, .theme-light {
   --background: #FDFBF7;
@@ -63,4 +70,56 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Dynamic Prose / HTML Content Theme Fixer --- */
+.prose {
+  color: var(--primary) !important;
+}
+
+.prose p, 
+.prose li, 
+.prose span, 
+.prose strong, 
+.prose b {
+  color: var(--primary) !important;
+}
+
+.prose h1, 
+.prose h2, 
+.prose h3, 
+.prose h4, 
+.prose h5, 
+.prose h6 {
+  color: var(--foreground) !important;
+  font-weight: 800 !important;
+}
+
+.prose a {
+  color: var(--accent) !important;
+  text-decoration: underline;
+}
+
+.prose code, 
+.prose pre {
+  background-color: var(--tertiary) !important;
+  color: var(--foreground) !important;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.prose blockquote {
+  border-left-color: var(--accent) !important;
+  color: var(--foreground) !important;
+  background-color: var(--tertiary)/20;
+}
+
+/* Custom Swiper Pagination Bullet Overrides for your Theme */
+.swiper-pagination-bullet {
+  background: var(--primary) !important;
+  opacity: 0.5;
+}
+.swiper-pagination-bullet-active {
+  background: var(--accent) !important;
+  opacity: 1 !important;
 }
