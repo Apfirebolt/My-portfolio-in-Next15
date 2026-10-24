@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaArrowRight, FaCode, FaFolderOpen, FaGithub, FaEye } from "react-icons/fa";
 import useStore from "@/store";
-import Loader from "./Loader";
+import Loader from "@/components/Loader";
 
 // Safely strip HTML tags to avoid breaking markup during truncation
 const getPlainTextSnippet = (htmlString, maxLength = 160) => {
