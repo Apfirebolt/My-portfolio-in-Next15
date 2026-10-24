@@ -47,13 +47,13 @@ const GallerySection = () => {
   if (!galleryList.length) {
     return (
       <div className="flex flex-col items-center justify-center py-20 px-4 text-center">
-        <div className="p-4 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 mb-4">
-          <FaCamera className="text-3xl text-accent/80" />
+        <div className="p-4 rounded-full bg-[var(--tertiary)]/20 border border-[var(--primary)]/20 text-[var(--accent)] mb-4">
+          <FaCamera className="text-3xl text-[var(--accent)]" />
         </div>
-        <h3 className="text-lg font-semibold text-neutral-200">
+        <h3 className="text-lg font-bold text-[var(--foreground)]">
           No gallery posts available
         </h3>
-        <p className="text-sm text-neutral-500 max-w-sm mt-1">
+        <p className="text-sm text-[var(--primary)] max-w-sm mt-1">
           Photos and visual stories will appear here soon.
         </p>
       </div>
@@ -74,11 +74,11 @@ const GallerySection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-40px" }}
-            className="group flex flex-col justify-between overflow-hidden rounded-2xl bg-neutral-900/80 border border-neutral-800 shadow-sm hover:shadow-2xl hover:border-neutral-700 transition-all duration-300 hover:-translate-y-1.5"
+            className="group flex flex-col justify-between overflow-hidden rounded-3xl bg-[var(--tertiary)]/15 border border-[var(--primary)]/20 shadow-lg hover:shadow-2xl hover:border-[var(--accent)]/50 transition-all duration-300 hover:-translate-y-1.5 backdrop-blur-md"
           >
             <div>
               {/* Cover Photo Header */}
-              <div className="relative w-full h-52 sm:h-56 bg-neutral-950 overflow-hidden border-b border-neutral-800">
+              <div className="relative w-full h-52 sm:h-56 bg-[var(--background)] overflow-hidden border-b border-[var(--primary)]/20">
                 {coverImage ? (
                   <Image
                     src={
@@ -91,15 +91,15 @@ const GallerySection = () => {
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-900 to-black text-neutral-600">
-                    <FaCamera className="text-3xl opacity-40" />
+                  <div className="w-full h-full flex items-center justify-center bg-[var(--tertiary)]/30 text-[var(--primary)]">
+                    <FaCamera className="text-3xl opacity-40 text-[var(--accent)]" />
                   </div>
                 )}
 
                 {/* Photo Count Pill */}
                 {totalImages > 0 && (
-                  <div className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-white text-[11px] font-medium border border-white/10">
-                    <FaImages className="text-accent text-xs" />
+                  <div className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--background)]/80 backdrop-blur-md text-[var(--foreground)] text-[11px] font-semibold border border-[var(--primary)]/20 shadow-xs">
+                    <FaImages className="text-[var(--accent)] text-xs" />
                     <span>{totalImages} {totalImages === 1 ? "Photo" : "Photos"}</span>
                   </div>
                 )}
@@ -113,7 +113,7 @@ const GallerySection = () => {
                     {item.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
-                        className="px-2.5 py-0.5 bg-neutral-800 text-neutral-300 font-medium rounded-md text-[11px] uppercase tracking-wider"
+                        className="px-2.5 py-0.5 bg-[var(--tertiary)]/40 text-[var(--foreground)] font-semibold rounded-md text-[11px] uppercase tracking-wider border border-[var(--primary)]/20"
                       >
                         {tag.name}
                       </span>
@@ -122,22 +122,22 @@ const GallerySection = () => {
                 )}
 
                 {/* Title */}
-                <h2 className="text-xl font-bold text-white tracking-tight mb-2 group-hover:text-accent transition-colors line-clamp-1">
+                <h2 className="text-xl font-extrabold text-[var(--foreground)] tracking-tight mb-2 group-hover:text-[var(--accent)] transition-colors line-clamp-1">
                   {item.title}
                 </h2>
 
                 {/* Description Snippet */}
-                <p className="text-sm text-neutral-400 leading-relaxed line-clamp-3 mb-4">
+                <p className="text-sm text-[var(--primary)] leading-relaxed line-clamp-3 mb-4">
                   {getPlainTextSnippet(item.description, 160)}
                 </p>
               </div>
             </div>
 
             {/* Card Action Link */}
-            <div className="px-6 pb-6 pt-2 border-t border-neutral-800/80 flex items-center justify-between">
+            <div className="px-6 pb-6 pt-2 border-t border-[var(--primary)]/20 flex items-center justify-between">
               <Link
                 href={`/gallery/${item.id}`}
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-neutral-200 hover:text-accent transition-colors group/link"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[var(--foreground)] hover:text-[var(--accent)] transition-colors group/link"
               >
                 <span>View Story</span>
                 <FaArrowRight className="text-xs transition-transform duration-200 group-hover/link:translate-x-1" />

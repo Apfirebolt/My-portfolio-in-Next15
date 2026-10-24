@@ -15,10 +15,10 @@ const ProjectsPage = () => {
   return (
     <Fragment>
       <Header />
-      <main className="min-h-screen pt-20 pb-16 bg-neutral-950 text-white selection:bg-accent selection:text-neutral-950">
+      <main className="min-h-screen pt-28 pb-20 bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--accent)] selection:text-[var(--background)] transition-colors duration-300">
         
         {/* Hero Section Banner */}
-        <section className="relative w-full overflow-hidden border-b border-white/10 py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+        <section className="relative w-full overflow-hidden border-b border-[var(--primary)]/20 py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
           
           {/* Background Image with Next.js Image */}
           <div className="absolute inset-0 -z-20">
@@ -28,50 +28,51 @@ const ProjectsPage = () => {
               fill
               priority
               quality={80}
-              className="object-cover object-center opacity-25 filter blur-[1px] scale-105"
+              className="object-cover object-center opacity-20 filter blur-[1px] scale-105"
             />
           </div>
 
           {/* Ambient Glows & Gradient Mask */}
           <div 
             aria-hidden="true" 
-            className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-accent/15 rounded-full blur-[120px] -z-10" 
+            className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-[var(--accent)]/15 rounded-full blur-[120px] -z-10" 
           />
           <div 
             aria-hidden="true" 
-            className="absolute inset-0 -z-10 bg-gradient-to-b from-neutral-950/80 via-neutral-950/90 to-neutral-950" 
+            className="absolute inset-0 -z-10 bg-gradient-to-b from-[var(--background)]/80 via-[var(--background)]/90 to-[var(--background)]" 
           />
 
           <div className="max-w-7xl mx-auto">
             {/* Breadcrumb */}
-            <nav className="mb-6 flex items-center text-xs sm:text-sm text-neutral-400 space-x-2">
-              <Link href="/" className="hover:text-white transition-colors">
+            <nav className="mb-6 flex items-center text-xs sm:text-sm text-[var(--primary)] space-x-2">
+              <Link href="/" className="hover:text-[var(--accent)] transition-colors">
                 Home
               </Link>
-              <span>/</span>
-              <span className="text-accent font-medium">Projects</span>
+              <span className="opacity-60">/</span>
+              <span className="text-[var(--accent)] font-medium">Projects</span>
             </nav>
 
             <div className="max-w-3xl">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900/90 border border-neutral-800 text-xs font-medium text-neutral-300 mb-4 backdrop-blur-md">
-                <FaCode className="text-accent text-xs" />
-                <span>Portfolio & Engineering Work</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--tertiary)]/20 border border-[var(--primary)]/20 text-xs font-medium text-[var(--foreground)] mb-4 backdrop-blur-md shadow-xs">
+                <FaCode className="text-[var(--accent)] text-xs" />
+                <span>Portfolio & Projects</span>
               </div>
 
               {/* Title & Tagline */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4 leading-tight">
-                Featured <span className="bg-gradient-to-r from-accent via-amber-300 to-accent bg-clip-text text-transparent">Projects</span>
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[var(--foreground)] mb-4 leading-tight">
+                Featured <span className="text-[var(--accent)]">Projects</span>
               </h1>
-              <p className="text-sm sm:text-base lg:text-lg text-neutral-300 leading-relaxed max-w-2xl">
-                A curated showcase of applications, experiments, and open-source tools I have built, exploring modern frontends, robust backends, and cloud architectures.
+              <p className="text-sm sm:text-base lg:text-lg text-[var(--primary)] leading-relaxed max-w-2xl">
+                List of projects I worked on through my career and personal endeavors. These include mostly full-stack projects, some desktop apps
+                and AI applications as well.
               </p>
             </div>
           </div>
         </section>
 
         {/* Projects Grid Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
           <ProjectSection />
         </section>
       </main>

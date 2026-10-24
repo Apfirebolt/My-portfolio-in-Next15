@@ -47,13 +47,13 @@ const ProjectSection = () => {
   if (!projectList.length) {
     return (
       <div className="flex flex-col items-center justify-center py-20 px-4 text-center">
-        <div className="p-4 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 mb-4">
-          <FaFolderOpen className="text-3xl text-accent/80" />
+        <div className="p-4 rounded-full bg-[var(--tertiary)]/20 border border-[var(--primary)]/20 text-[var(--accent)] mb-4">
+          <FaFolderOpen className="text-3xl text-[var(--accent)]" />
         </div>
-        <h3 className="text-lg font-semibold text-neutral-200">
+        <h3 className="text-lg font-bold text-[var(--foreground)]">
           No projects available
         </h3>
-        <p className="text-sm text-neutral-500 max-w-sm mt-1">
+        <p className="text-sm text-[var(--primary)] max-w-sm mt-1">
           Check back soon for upcoming project releases and case studies.
         </p>
       </div>
@@ -76,11 +76,11 @@ const ProjectSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-40px" }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-neutral-900/80 border border-neutral-800 shadow-sm hover:shadow-2xl hover:border-neutral-700 transition-all duration-300 hover:-translate-y-1.5"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-[var(--tertiary)]/15 border border-[var(--primary)]/20 shadow-lg hover:shadow-2xl hover:border-[var(--accent)]/50 transition-all duration-300 hover:-translate-y-1.5 backdrop-blur-md"
           >
             <div>
               {/* Cover Image Thumbnail / Fallback Banner */}
-              <div className="relative w-full h-48 sm:h-52 bg-neutral-950 overflow-hidden border-b border-neutral-800">
+              <div className="relative w-full h-48 sm:h-52 bg-[var(--background)] overflow-hidden border-b border-[var(--primary)]/20">
                 {coverImage ? (
                   <Image
                     src={
@@ -93,15 +93,15 @@ const ProjectSection = () => {
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-900 to-black text-neutral-600">
-                    <FaCode className="text-3xl opacity-40" />
+                  <div className="w-full h-full flex items-center justify-center bg-[var(--tertiary)]/30 text-[var(--primary)]">
+                    <FaCode className="text-3xl opacity-40 text-[var(--accent)]" />
                   </div>
                 )}
 
                 {/* View Count Badge */}
                 {typeof project.views !== "undefined" && (
-                  <div className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-white text-[11px] font-medium border border-white/10">
-                    <FaEye className="text-accent text-xs" />
+                  <div className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--background)]/80 backdrop-blur-md text-[var(--foreground)] text-[11px] font-semibold border border-[var(--primary)]/20 shadow-xs">
+                    <FaEye className="text-[var(--accent)] text-xs" />
                     <span>{project.views}</span>
                   </div>
                 )}
@@ -115,7 +115,7 @@ const ProjectSection = () => {
                     {project.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
-                        className="px-2.5 py-0.5 bg-neutral-800 text-neutral-300 font-medium rounded-md text-[11px] uppercase tracking-wider"
+                        className="px-2.5 py-0.5 bg-[var(--tertiary)]/40 text-[var(--foreground)] font-semibold rounded-md text-[11px] uppercase tracking-wider border border-[var(--primary)]/20"
                       >
                         {tag.name}
                       </span>
@@ -124,7 +124,7 @@ const ProjectSection = () => {
                 )}
 
                 {/* Project Title */}
-                <h2 className="text-xl font-bold text-white tracking-tight mb-3 group-hover:text-accent transition-colors line-clamp-1">
+                <h2 className="text-xl font-extrabold text-[var(--foreground)] tracking-tight mb-3 group-hover:text-[var(--accent)] transition-colors line-clamp-1">
                   {project.title}
                 </h2>
 
@@ -134,14 +134,14 @@ const ProjectSection = () => {
                     {techList.slice(0, 4).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 bg-neutral-800/80 text-neutral-300 rounded-md text-xs font-medium border border-neutral-700/60"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 bg-[var(--background)]/80 text-[var(--foreground)] rounded-lg text-xs font-medium border border-[var(--primary)]/20 shadow-xs"
                       >
-                        <FaCode className="text-[10px] text-accent" />
+                        <FaCode className="text-[10px] text-[var(--accent)]" />
                         {tech}
                       </span>
                     ))}
                     {techList.length > 4 && (
-                      <span className="px-2 py-1 bg-neutral-800 text-neutral-400 rounded-md text-xs font-medium">
+                      <span className="px-2 py-1 bg-[var(--background)]/80 text-[var(--primary)] rounded-lg text-xs font-medium border border-[var(--primary)]/20">
                         +{techList.length - 4}
                       </span>
                     )}
@@ -149,17 +149,17 @@ const ProjectSection = () => {
                 )}
 
                 {/* Description Snippet */}
-                <p className="text-sm text-neutral-400 leading-relaxed line-clamp-3 mb-4">
+                <p className="text-sm text-[var(--primary)] leading-relaxed line-clamp-3 mb-4">
                   {getPlainTextSnippet(project.description, 160)}
                 </p>
               </div>
             </div>
 
             {/* Bottom Actions Area */}
-            <div className="px-6 pb-6 pt-3 border-t border-neutral-800/80 flex items-center justify-between">
+            <div className="px-6 pb-6 pt-3 border-t border-[var(--primary)]/20 flex items-center justify-between">
               <Link
                 href={`/projects/${project.id}`}
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-200 hover:text-accent transition-colors group/link"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--foreground)] hover:text-[var(--accent)] transition-colors group/link"
               >
                 <span>View Details</span>
                 <FaArrowRight className="text-xs transition-transform duration-200 group-hover/link:translate-x-1" />
@@ -171,7 +171,7 @@ const ProjectSection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="View source repository"
-                  className="p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors"
+                  className="p-2.5 rounded-xl text-[var(--primary)] hover:text-[var(--accent)] hover:bg-[var(--tertiary)]/30 border border-transparent hover:border-[var(--primary)]/20 transition-all"
                 >
                   <FaGithub className="text-lg" />
                 </a>
