@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import httpClient from "@/plugins/interceptor";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GalleryDetailClient from "@/components/GalleryDetailClient";
@@ -8,8 +9,8 @@ export async function generateMetadata({ params }) {
   const { id } = await params;
 
   try {
-    const response = await axios.get(
-      `https://softgenie.org/api/gallery-posts/${id}`
+    const response = await httpClient.get(
+      `gallery-posts/${id}`
     );
     const gallery = response.data;
 
@@ -33,8 +34,8 @@ const GalleryDetailPage = async ({ params }) => {
   let fetchError = false;
 
   try {
-    const response = await axios.get(
-      `https://softgenie.org/api/gallery-posts/${id}`
+    const response = await httpClient.get(
+      `gallery-posts/${id}`
     );
     gallery = response.data;
   } catch (error) {

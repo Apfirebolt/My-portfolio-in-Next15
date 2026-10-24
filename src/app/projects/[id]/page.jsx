@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import httpClient from "@/plugins/interceptor";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProjectDetailClient from "@/components/ProjectDetailClient";
@@ -8,8 +8,8 @@ export async function generateMetadata({ params }) {
   const { id } = await params;
 
   try {
-    const response = await axios.get(
-      `https://softgenie.org/api/projects/${id}`
+    const response = await httpClient.get(
+      `projects/${id}`
     );
     const project = response.data;
 
@@ -33,8 +33,8 @@ const ProjectDetailPage = async ({ params }) => {
   let fetchError = false;
 
   try {
-    const response = await axios.get(
-      `https://softgenie.org/api/projects/${id}`
+    const response = await httpClient.get(
+      `projects/${id}`
     );
     project = response.data;
   } catch (error) {

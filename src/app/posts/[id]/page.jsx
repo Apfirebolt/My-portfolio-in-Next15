@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import httpClient from "@/plugins/interceptor";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogDetailClient from "@/components/BlogDetailClient";
@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
   const { id } = await params;
 
   try {
-    const response = await axios.get(`https://softgenie.org/api/blogs/${id}`);
+    const response = await httpClient.get(`blogs/${id}`);
     const post = response.data;
 
     return {
@@ -31,7 +31,7 @@ const PostDetailPage = async ({ params }) => {
   let fetchError = false;
 
   try {
-    const response = await axios.get(`https://softgenie.org/api/blogs/${id}`);
+    const response = await httpClient.get(`blogs/${id}`);
     post = response.data;
   } catch (error) {
     console.error("Error fetching post details:", error);
