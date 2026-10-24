@@ -2,43 +2,39 @@ import React from "react";
 import axios from "axios";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import GalleryDetailClient from "@/components/GalleryDetailClient";
+import BlogDetailClient from "@/components/BlogDetailClient";
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
 
   try {
-    const response = await axios.get(
-      `https://softgenie.org/api/gallery-posts/${id}`
-    );
-    const gallery = response.data;
+    const response = await axios.get(`https://softgenie.org/api/blogs/${id}`);
+    const post = response.data;
 
     return {
-      title: `${gallery.title} | Gallery`,
-      description: gallery.meta_description || "Explore photo story and gallery details.",
+      title: `${post.title} | Blog`,
+      description: post.meta_description || "Read full article and insights.",
     };
   } catch (error) {
-    console.error("Error fetching gallery metadata:", error);
+    console.error("Error fetching post metadata:", error);
     return {
-      title: "Gallery Details",
-      description: "Details about the gallery.",
+      title: "Post Details | Blog",
+      description: "Details about the post.",
     };
   }
 }
 
-const GalleryDetailPage = async ({ params }) => {
+const PostDetailPage = async ({ params }) => {
   const { id } = await params;
 
-  let gallery = null;
+  let post = null;
   let fetchError = false;
 
   try {
-    const response = await axios.get(
-      `https://softgenie.org/api/gallery-posts/${id}`
-    );
-    gallery = response.data;
+    const response = await axios.get(`https://softgenie.org/api/blogs/${id}`);
+    post = response.data;
   } catch (error) {
-    console.error("Error fetching gallery details:", error);
+    console.error("Error fetching post details:", error);
     fetchError = true;
   }
 
@@ -46,11 +42,11 @@ const GalleryDetailPage = async ({ params }) => {
     <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--accent)] selection:text-[var(--background)] transition-colors duration-300">
       <Header />
       <main className="flex-1">
-        <GalleryDetailClient gallery={gallery} error={fetchError} />
+        <BlogDetailClient post={post} error={fetchError} />
       </main>
       <Footer />
     </div>
   );
 };
 
-export default GalleryDetailPage;
+export default PostDetailPage;

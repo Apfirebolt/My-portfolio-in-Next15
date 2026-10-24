@@ -2,16 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import parse from "html-react-parser";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
-import Image from "next/image";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/effect-fade";
+import { FaImages, FaCamera } from "react-icons/fa";
 
 const GalleryDetailClient = ({ gallery, error }) => {
   if (error || !gallery) {
@@ -54,6 +49,8 @@ const GalleryDetailClient = ({ gallery, error }) => {
       })
     : null;
 
+  const images = gallery.images || [];
+
   return (
     <div className="pt-28 pb-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,7 +81,7 @@ const GalleryDetailClient = ({ gallery, error }) => {
                 {gallery.tags.map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
-                    className="px-3.5 py-1 bg-[var(--tertiary)]/40 border border-[var(--primary)]/20 text-[var(--foreground)] font-semibold rounded-full text-xs tracking-wider uppercase"
+                    className="px-3.5 py-1 bg-[var(--tertiary)]/40 border border-[var(--primary)]/20 text-[var(--foreground)] font-semibold rounded-full text-xs tracking-wider uppercase shadow-xs"
                   >
                     {tag.name}
                   </span>
@@ -121,39 +118,48 @@ const GalleryDetailClient = ({ gallery, error }) => {
             </div>
           )}
 
-          {/* Swiper.js Slideshow Stream */}
+          {/* Swiper Slideshow Stream */}
           <section className="pt-8 border-t border-[var(--primary)]/20">
-            <h2 className="text-xl font-bold text-[var(--foreground)] mb-6 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
-              Captured Moments (Slideshow)
-            </h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-[var(--foreground)] flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
+                Captured Moments Slideshow
+              </h2>
+              {images.length > 0 && (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--background)]/80 text-[var(--foreground)] text-xs font-semibold border border-[var(--primary)]/20 shadow-xs">
+                  <FaImages className="text-[var(--accent)] text-xs" />
+                  <span>{images.length} {images.length === 1 ? "Photo" : "Photos"}</span>
+                </span>
+              )}
+            </div>
 
-            {gallery.images && gallery.images.length > 0 ? (
-              <div className="w-full rounded-2xl overflow-hidden border border-[var(--primary)]/20 bg-[var(--background)] shadow-md">
+            {images.length > 0 ? (
+              <div className="w-full rounded-2xl overflow-hidden border border-[var(--primary)]/20 bg-[var(--background)] shadow-xl">
                 <Swiper
                   modules={[Navigation, Pagination, Autoplay, EffectFade]}
                   effect="fade"
                   navigation
                   pagination={{ clickable: true }}
-                  autoplay={{ delay: 4000, disableOnInteraction: false }}
-                  className="w-full h-[350px] sm:h-[500px]"
+                  autoplay={{ delay: 5000, disableOnInteraction: false }}
+                  className="w-full h-[350px] sm:h-[480px]"
                 >
-                  {gallery.images.map((imgObj, idx) => {
-                    const imgSrc = imgObj.image?.startsWith("http")
-                      ? imgObj.image
-                      : `https://softgenie.org${imgObj.image}`;
+                  {images.map((imgObj, idx) => {
+                    const coverImage = imgObj.image;
+                    const imgSrc = coverImage?.startsWith("http")
+                      ? coverImage
+                      : `https://softgenie.org${coverImage}`;
 
                     return (
                       <SwiperSlide key={idx} className="relative w-full h-full">
                         <Image
                           src={imgSrc}
-                          alt={imgObj.caption || `Gallery Slide ${idx + 1}`}
+                          alt={imgObj.caption || `${gallery.title} photo ${idx + 1}`}
                           fill
                           className="object-cover object-center"
                         />
                         {imgObj.caption && (
-                          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 sm:p-6 text-white text-xs sm:text-sm">
-                            <p className="font-medium">{imgObj.caption}</p>
+                          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent p-4 sm:p-6 text-white text-xs sm:text-sm backdrop-blur-[2px]">
+                            <p className="font-medium text-center">{imgObj.caption}</p>
                           </div>
                         )}
                       </SwiperSlide>
@@ -174,7 +180,5 @@ const GalleryDetailClient = ({ gallery, error }) => {
     </div>
   );
 };
-
-GalleryDetailClient.displayName = "GalleryDetailClient";
 
 export default GalleryDetailClient;
